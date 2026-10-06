@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9fc;
+  --surface: #ffffff;
+  --foreground: #211f2b;
+  --foreground-muted: #6b6878;
+
+  --accent: #8b85f0;
+  --accent-soft: #e9e7fd;
+  --primary: #ef4694;
+  --primary-soft: #fde6f1;
+
+  --macro-protein: #ef4694;
+  --macro-carbs: #4cb876;
+  --macro-fat: #f5a623;
+
+  --border: #ebe9f3;
+  --radius-card: 1.25rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+
+  --color-macro-protein: var(--macro-protein);
+  --color-macro-carbs: var(--macro-carbs);
+  --color-macro-fat: var(--macro-fat);
+
+  --color-border: var(--border);
+  --radius-card: var(--radius-card);
+
+  --font-sans: var(--font-inter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #16141d;
+    --surface: #1f1c29;
+    --foreground: #f1f0f7;
+    --foreground-muted: #a7a3b8;
+    --accent-soft: #2c2847;
+    --primary-soft: #3a1f2d;
+    --border: #2d2a3a;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
