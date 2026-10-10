@@ -1,3 +1,5 @@
+import { tiers as tierContent } from "@/content/text";
+
 export type TierCode = "starter" | "pro" | "vip";
 
 export type TierDisplay = {
@@ -9,51 +11,45 @@ export type TierDisplay = {
   priceGel: number;
   includes: string[];
   cta: string;
+  /** Drives both the "რეკომენდირებული" badge and the highlighted-card
+   * styling on the pricing cards (homepage, /pricing, quiz result) —
+   * exactly one tier should have this set. See PricingTable.tsx. */
+  recommended: boolean;
 };
 
 export const TIERS: TierDisplay[] = [
   {
     code: "starter",
     id: 1,
-    nameKa: "სტარტერი",
     nameEn: "Starter (AI)",
-    tagline: "დამოუკიდებელი დაწყება — თუ გსურთ, ჯერ თავად სცადოთ",
     priceGel: 39,
-    includes: [
-      "ხელოვნური ინტელექტის მიერ შედგენილი კვირეული კვების გეგმა",
-      "ქართული რეცეპტების ბაზა",
-      "ავტომატურად გენერირებული სავაჭრო სია",
-    ],
-    cta: "ამ პაკეტის არჩევა",
+    nameKa: tierContent.starter.nameKa,
+    tagline: tierContent.starter.tagline,
+    includes: tierContent.starter.includes,
+    cta: tierContent.starter.cta,
+    recommended: false,
   },
   {
     code: "pro",
     id: 2,
-    nameKa: "პრო",
     nameEn: "Pro (Human + AI)",
-    tagline: "რეკომენდებული — თუ გსურთ ნამდვილი ადამიანის მხარდაჭერა",
     priceGel: 149,
-    includes: [
-      "ყველაფერი „სტარტერიდან“",
-      "თვეში 1 ვიდეო-კონსულტაცია სერტიფიცირებულ დიეტოლოგთან",
-      "თქვენი გეგმის ინდივიდუალური კორექტირება და პროგრესის მონიტორინგი დიეტოლოგის მიერ",
-    ],
-    cta: "ამ პაკეტის არჩევა",
+    nameKa: tierContent.pro.nameKa,
+    tagline: tierContent.pro.tagline,
+    includes: tierContent.pro.includes,
+    cta: tierContent.pro.cta,
+    recommended: false,
   },
   {
     code: "vip",
     id: 3,
-    nameKa: "ვიპ",
     nameEn: "VIP All-Inclusive",
-    tagline: "ყველაფერი ჩართულია — თუ გსურთ, რომ ყველაფერზე ჩვენ ვიზრუნოთ",
     priceGel: 550,
-    includes: [
-      "ყველაფერი „პროდან“",
-      "Fitpass აბონემენტი სავარჯიშო დარბაზზე",
-      "ფასდაკლება პარტნიორ ლაბორატორიებში",
-      "პირადი მწვრთნელის ინდივიდუალური პროგრამა",
-    ],
-    cta: "ამ პაკეტის არჩევა",
+    nameKa: tierContent.vip.nameKa,
+    tagline: tierContent.vip.tagline,
+    includes: tierContent.vip.includes,
+    cta: tierContent.vip.cta,
+    recommended: true,
   },
 ];
 

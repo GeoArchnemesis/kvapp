@@ -1,33 +1,47 @@
-const faqs = [
-  {
-    q: "შემიძლია ნებისმიერ დროს გავაუქმო გამოწერა?",
-    a: "დიახ. გამოწერის გაუქმება შეგიძლიათ ბილინგის პარამეტრებიდან — წვდომა შენარჩუნებული გექნებათ მიმდინარე ანგარიშსწორების პერიოდის ბოლომდე.",
-  },
-  {
-    q: "რას მოიცავს დიეტოლოგთან კონსულტაცია?",
-    a: "ყოველთვიურ ვიდეო-ზარს სერტიფიცირებულ დიეტოლოგთან, რომელსაც შეუძლია უშუალოდ შეცვალოს თქვენი ხელოვნური ინტელექტით შედგენილი გეგმა.",
-  },
-  {
-    q: "არის ეს სამედიცინო მკურნალობის პროგრამა?",
-    a: "არა. Kvapp არის ცხოვრების სტილისა და ჯანსაღი ჩვევების ფორმირების სერვისი და არ წარმოადგენს დიაგნოსტიკურ ან სამკურნალო მომსახურებას. სამედიცინო მდგომარეობის შემთხვევაში, გთხოვთ, მიმართოთ ექიმს.",
-  },
-  {
-    q: "როგორ მუშაობს ანგარიშსწორება?",
-    a: "ყოველთვიურად, გამოწერის თარიღის შესაბამისად, დაგერიცხებათ თანხა ლარში. ფასები ყოველთვის ცხადად არის მითითებული — დამალული გადასახადების გარეშე.",
-  },
-];
+"use client";
+
+import { useState } from "react";
+import { ChatIcon, ChevronDownIcon } from "@/components/icons";
+import { cn } from "@/lib/utils/cn";
+import { faqHeading, faqItems } from "@/content/text";
 
 export function FAQ() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
     <section className="mx-auto max-w-5xl px-4 py-16">
-      <h2 className="text-2xl font-bold">ხშირად დასმული კითხვები</h2>
-      <div className="mt-6 divide-y divide-border">
-        {faqs.map((item) => (
-          <details key={item.q} className="group py-4">
-            <summary className="cursor-pointer list-none font-semibold">{item.q}</summary>
-            <p className="mt-2 text-sm text-foreground-muted">{item.a}</p>
-          </details>
-        ))}
+      <h2 className="text-3xl font-bold">{faqHeading}</h2>
+      <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-surface px-6 shadow-[var(--shadow-card)]">
+        {faqItems.map((item, i) => {
+          const isOpen = openIndex === i;
+          return (
+            <div key={item.q} className="py-1">
+              <button
+                type="button"
+                onClick={() => setOpenIndex(isOpen ? null : i)}
+                aria-expanded={isOpen}
+                className="flex w-full items-center gap-3 py-4 text-left font-semibold"
+              >
+                <ChatIcon className="h-5 w-5 shrink-0 text-accent" />
+                <span className="flex-1">{item.q}</span>
+                <ChevronDownIcon
+                  className={cn(
+                    "h-5 w-5 shrink-0 text-foreground-muted transition-transform duration-300",
+                    isOpen && "rotate-180"
+                  )}
+                />
+              </button>
+              <div
+                className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+              >
+                <div className="overflow-hidden">
+                  <p className="pb-5 pl-8 pr-8 text-sm text-foreground-muted">{item.a}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

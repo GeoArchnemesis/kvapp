@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { siteMeta } from "@/content/text";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,9 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Kvapp",
-  description:
-    "ხელოვნური ინტელექტით შექმნილი კვების გეგმები, ნამდვილი ქართველი დიეტოლოგები და თქვენი სავარჯიშო დარბაზი — ყველაფერი ერთად.",
+  title: siteMeta.title,
+  description: siteMeta.description,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

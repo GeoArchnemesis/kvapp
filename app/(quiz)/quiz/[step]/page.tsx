@@ -31,7 +31,7 @@ export default async function QuizStepPage({
   const action = answerStepAction.bind(null, step);
 
   return (
-    <div>
+    <div className="mx-auto w-full max-w-xl">
       <QuizProgress step={step} />
       <OptionForm
         config={STEPS[step]}

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import type { StepConfig } from "@/lib/domain/quiz/config";
+import { optionForm } from "@/content/text";
 
 export function OptionForm({
   config,
@@ -21,9 +22,7 @@ export function OptionForm({
       <h1 className="text-2xl font-bold">{config.questionKa}</h1>
 
       {hasError && (
-        <p className="mt-3 text-sm font-medium text-primary">
-          გთხოვთ, გააკეთოთ არჩევანი გასაგრძელებლად.
-        </p>
+        <p className="mt-3 text-sm font-medium text-primary">{optionForm.requiredError}</p>
       )}
 
       <div className="mt-6 flex flex-col gap-3">
@@ -45,7 +44,7 @@ export function OptionForm({
       </div>
 
       <Button type="submit" className="mt-8 w-full">
-        გაგრძელება
+        {optionForm.continueButton}
       </Button>
     </form>
   );

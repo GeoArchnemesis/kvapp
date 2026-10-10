@@ -8,6 +8,20 @@
       "when": 1791294163494,
       "tag": "0000_bumpy_vance_astro",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791357316441,
+      "tag": "0001_luxuriant_swordsman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791652170959,
+      "tag": "0002_brave_impossible_man",
+      "breakpoints": true
     }
   ]
 }

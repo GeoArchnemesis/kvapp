@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
+/*
+ * Kvapp always renders the confirmed "Clean & Minimal" light palette,
+ * regardless of the visitor's OS color-scheme preference. An earlier
+ * @media (prefers-color-scheme: dark) override silently flipped the whole
+ * site to a dark theme for anyone with system dark mode on — never
+ * approved, and not this file's call to make. If dark mode is wanted later
+ * it should be a deliberate, explicit feature (e.g. a toggle), not a
+ * silent default.
+ */
 :root {
+  color-scheme: light;
+
   --background: #faf9fc;
   --surface: #ffffff;
   --foreground: #211f2b;
@@ -8,6 +19,7 @@
 
   --accent: #8b85f0;
   --accent-soft: #e9e7fd;
+  --accent-deep: #352154;
   --primary: #ef4694;
   --primary-soft: #fde6f1;
 
@@ -15,8 +27,11 @@
   --macro-carbs: #4cb876;
   --macro-fat: #f5a623;
 
-  --border: #ebe9f3;
+  --border: #e4e1ef;
   --radius-card: 1.25rem;
+
+  --shadow-card: 0 1px 2px rgba(33, 31, 43, 0.04), 0 12px 32px -8px rgba(139, 133, 240, 0.18);
+  --shadow-button: 0 8px 20px -6px rgba(239, 70, 148, 0.45);
 }
 
 @theme inline {
@@ -27,6 +42,7 @@
 
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
   --color-primary: var(--primary);
   --color-primary-soft: var(--primary-soft);
 
@@ -40,20 +56,45 @@
   --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #16141d;
-    --surface: #1f1c29;
-    --foreground: #f1f0f7;
-    --foreground-muted: #a7a3b8;
-    --accent-soft: #2c2847;
-    --primary-soft: #3a1f2d;
-    --border: #2d2a3a;
-  }
+html {
+  color-scheme: light;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Used by the contact form: a brief shake on an invalid field, and a soft
+   fade-in when the success state swaps in. */
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

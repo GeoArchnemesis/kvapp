@@ -464,3 +464,35 @@ export const notificationPreferences = pgTable("notification_preferences", {
   whatsappEnabled: boolean("whatsapp_enabled").notNull().default(true),
   emailEnabled: boolean("email_enabled").notNull().default(true),
 });
+
+// ---------- Lead capture ----------
+export const contactSubmissions = pgTable("contact_submissions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  fullName: text("full_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  message: text("message"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// ---------- Admin auth (Auth.js magic-link) ----------
+// Deliberately separate from `users` above: `users` is the future
+// consumer-facing account model (phone/password/role), while this is a
+// minimal identity store for the internal-only admin dashboard, built to
+// Auth.js's adapter contract (see lib/domain/admin/auth-adapter.ts).
+export const authUsers = pgTable("auth_users", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  email: text("email").notNull().unique(),
+  emailVerified: timestamp("email_verified", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const authVerificationTokens = pgTable(
+  "auth_verification_tokens",
+  {
+    identifier: text("identifier").notNull(),
+    token: text("token").notNull(),
+    expires: timestamp("expires", { withTimezone: true }).notNull(),
+  },
+  (t) => [unique().on(t.identifier, t.token)]
+);

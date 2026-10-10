@@ -140,10 +140,135 @@ export function ChevronRightIcon(props: IconProps) {
   );
 }
 
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <svg {...base} fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="m5 9 7 7 7-7" />
+    </svg>
+  );
+}
+
 export function PlusIcon(props: IconProps) {
   return (
     <svg {...base} fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" {...props}>
       <path d="M12 5v14M5 12h14" />
+    </svg>
+  );
+}
+
+export function ShieldIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 2.5 4.5 5.5v6c0 5 3.2 8.4 7.5 10 4.3-1.6 7.5-5 7.5-10v-6L12 2.5Z" />
+    </svg>
+  );
+}
+
+export function SparkleIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 2.5c.6 3.7 2.3 5.4 6 6-3.7.6-5.4 2.3-6 6-.6-3.7-2.3-5.4-6-6 3.7-.6 5.4-2.3 6-6Z" />
+      <path d="M19 15.5c.3 1.6 1 2.3 2.6 2.6-1.6.3-2.3 1-2.6 2.6-.3-1.6-1-2.3-2.6-2.6 1.6-.3 2.3-1 2.6-2.6Z" />
+    </svg>
+  );
+}
+
+export function CrownIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 8l4 3 5-6 5 6 4-3-2 10H5L3 8Z" />
+    </svg>
+  );
+}
+
+const line = {
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.75,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+export function UserLineIcon(props: IconProps) {
+  return (
+    <svg {...line} {...props}>
+      <circle cx="12" cy="8" r="3.5" />
+      <path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6" />
+    </svg>
+  );
+}
+
+export function MailIcon(props: IconProps) {
+  return (
+    <svg {...line} {...props}>
+      <rect x="3" y="5.5" width="18" height="13" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
+
+export function PhoneLineIcon(props: IconProps) {
+  return (
+    <svg {...line} {...props}>
+      <path d="M6.5 3.5h3l1.5 4-2 1.5a10 10 0 0 0 4.5 4.5l1.5-2 4 1.5v3a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 5 5.1a1.5 1.5 0 0 1 1.5-1.6Z" />
+    </svg>
+  );
+}
+
+export function MessageLineIcon(props: IconProps) {
+  return (
+    <svg {...line} {...props}>
+      <path d="M4 5.5h16a1 1 0 0 1 1 1V15a1 1 0 0 1-1 1H9l-4 3.5V16H4a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z" />
+      <path d="M7.5 9.5h9M7.5 12.5h5.5" />
+    </svg>
+  );
+}
+
+export function ShieldLineIcon(props: IconProps) {
+  return (
+    <svg {...line} {...props}>
+      <path d="M12 3.5 4.5 6v5.5c0 4.6 3 8 7.5 9 4.5-1 7.5-4.4 7.5-9V6L12 3.5Z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  );
+}
+
+export function ArrowRightIcon(props: IconProps) {
+  return (
+    <svg {...line} {...props}>
+      <path d="M4 12h16M14 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+export function AlertIcon(props: IconProps) {
+  return (
+    <svg {...line} {...props}>
+      <path d="M12 3.5 21 19H3L12 3.5Z" />
+      <path d="M12 9.5v4M12 16.5h.01" />
+    </svg>
+  );
+}
+
+export function CalculatorIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="4" y="2.5" width="16" height="19" rx="2.5" />
+      <rect x="6.5" y="5" width="11" height="4" rx="1" fill="var(--background)" />
+      {[0, 1, 2, 3].map((row) =>
+        [0, 1, 2].map((col) => (
+          <circle
+            key={`${row}-${col}`}
+            cx={8 + col * 4}
+            cy={12.5 + row * 2.3}
+            r="0.9"
+            fill="var(--background)"
+          />
+        ))
+      )}
     </svg>
   );
 }

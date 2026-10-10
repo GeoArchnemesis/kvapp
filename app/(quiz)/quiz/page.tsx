@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { startQuizAction } from "@/lib/domain/quiz/actions";
 import { getActiveQuizSession, getAnsweredStepValues } from "@/lib/domain/quiz/queries";
 import { STEP_ORDER } from "@/lib/domain/quiz/config";
+import { quizIntro } from "@/content/text";
 
 export default async function QuizIntroPage() {
   const session = await getActiveQuizSession();
@@ -18,14 +19,11 @@ export default async function QuizIntroPage() {
   }
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center text-center">
-      <h1 className="text-3xl font-extrabold">იპოვეთ თქვენი პაკეტი</h1>
-      <p className="mt-2 max-w-sm text-foreground-muted">
-        უპასუხეთ 6 მოკლე კითხვას — შევარჩევთ თქვენთვის შესაფერის პაკეტს და მაგალითის
-        სახით გაჩვენებთ ერთი დღის მენიუს, შედგენილს ნამდვილი ქართული რეცეპტებით.
-      </p>
+    <div className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center text-center">
+      <h1 className="text-3xl font-extrabold">{quizIntro.heading}</h1>
+      <p className="mt-2 max-w-sm text-foreground-muted">{quizIntro.body}</p>
       <form action={startQuizAction} className="mt-8">
-        <Button type="submit">კითხვარის დაწყება</Button>
+        <Button type="submit">{quizIntro.startButton}</Button>
       </form>
     </div>
   );
