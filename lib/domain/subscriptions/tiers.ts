@@ -38,7 +38,7 @@ export const TIERS: TierDisplay[] = [
     tagline: tierContent.pro.tagline,
     includes: tierContent.pro.includes,
     cta: tierContent.pro.cta,
-    recommended: false,
+    recommended: true,
   },
   {
     code: "vip",
@@ -49,7 +49,7 @@ export const TIERS: TierDisplay[] = [
     tagline: tierContent.vip.tagline,
     includes: tierContent.vip.includes,
     cta: tierContent.vip.cta,
-    recommended: true,
+    recommended: false,
   },
 ];
 

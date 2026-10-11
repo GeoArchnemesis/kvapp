@@ -56,9 +56,13 @@ export function PricingTable({
                 className="mb-5"
                 icon={<Icon className="h-9 w-9 text-white/80" />}
               />
-              {tier.recommended && <Badge className="mb-3">{recommendedBadge}</Badge>}
-              <h3 className="whitespace-nowrap text-lg font-semibold">{tier.nameKa}</h3>
-              <p className="mt-1 text-sm text-foreground-muted">{tier.tagline}</p>
+              <div className="min-h-[92px] sm:min-h-[104px] md:min-h-[92px]">
+                <div className="flex items-center gap-2">
+                  <h3 className="whitespace-nowrap text-lg font-semibold">{tier.nameKa}</h3>
+                  {tier.recommended && <Badge>{recommendedBadge}</Badge>}
+                </div>
+                <p className="mt-1 text-sm text-foreground-muted">{tier.tagline}</p>
+              </div>
               <p className="mt-4 whitespace-nowrap text-3xl font-extrabold sm:text-xl md:text-2xl lg:text-3xl">
                 {tier.priceGel} ₾
                 <span className="text-base font-medium text-foreground-muted sm:text-xs md:text-sm lg:text-base">
